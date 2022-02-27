@@ -71,12 +71,12 @@ class CandidatesForm extends FormBase {
 			'#title' => t('Country'),
 			'#required' => TRUE,
 		);
-		/*$form['candidate_continent'] = array(
+		$form['candidate_continent'] = array(
 			'#type' => 'select',
 			'#title' => t('Continent'),
 			'#required' => TRUE,
 			'#options' => $continent_options,
-		);*/
+		);
 		$form['candidate_description'] = array(
 			'#type' => 'textarea',
 			'#title' => t('Description'),
@@ -88,6 +88,7 @@ class CandidatesForm extends FormBase {
 			'#value' => $this->t('Save Candidate Data'),
 			'#button_type' => 'primary',
 		);
+		
 		return $form;
 	}
 
@@ -116,9 +117,9 @@ class CandidatesForm extends FormBase {
 		if ($form_state->getValue('candidate_country') == '') {
 			$form_state->setErrorByName('candidate_country', $this->t('Please Enter Country'));
 		}
-		/*if ($form_state->getValue('candidate_continent') == '') {
+		if ($form_state->getValue('candidate_continent') == '') {
 			$form_state->setErrorByName('candidate_continent', $this->t('Please Select Continent'));
-		}*/
+		}
 		if ($form_state->getValue('candidate_description') == '') {
 			$form_state->setErrorByName('candidate_description', $this->t('Please Enter Description'));
 		}
@@ -140,7 +141,7 @@ class CandidatesForm extends FormBase {
 		$node->field_email_id = $form_state->getValue('candidate_email');
 		$node->field_city = $form_state->getValue('candidate_city');
 		$node->field_country = $form_state->getValue('candidate_country');
-		//$node->field_continent = $form_state->getValue('candidate_continent');
+		$node->field_continent->target_id = intval($form_state->getValue('candidate_continent')) + 1;
 		$node->field_description = $form_state->getValue('candidate_description');
 		$node->save();
 

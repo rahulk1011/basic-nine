@@ -1,10 +1,10 @@
 candidates.form:
-    path: '/add-candidate'
-    defaults:
-        _title: 'Add Candidates'
-        _form: '\Drupal\candidates\Form\CandidatesForm'
-    requirements:
-        _permission: 'access content'
+ path: '/add-candidate'
+ defaults:
+  _title: 'Add Candidates'
+  _form: '\Drupal\candidates\Form\CandidatesForm'
+ requirements:
+  _permission: 'access content'
 
 get_candidate_detail:
  path: 'api/get_candidate_detail'
